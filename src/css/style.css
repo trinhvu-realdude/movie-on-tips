@@ -95,5 +95,29 @@ input {
 }
 
 .poster {
-    border-radius: 5px;
+    width: 240px; 
+    height: 360px;
+    border: 1px solid #585454;
+    border-radius: 10px;
+    /* transition: background 0.5s, transform 0.5s; */
+}
+
+.poster:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 5px #585454;
+    transition: opacity 0.5s ease-in-out;
+    /* transition: opacity 1.75s ease-in-out, background 0.75s, transform 1.75s;
+    transform: scale(1.075); */
+}
+
+
+.container-poster:hover .poster {
+    zoom: 1;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    border: 1px solid black;
+}
+
+.movie-info {
+    display: none;
 }
