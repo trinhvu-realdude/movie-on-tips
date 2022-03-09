@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Fredoka', sans-serif;
+}
+
+.navbar {
+    background: #b1040e;
+    padding: 0 15px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.logo {
+    padding: 7.5px 10px 7.5px 70px;
+}
+
+.item-navbar {
+    padding: 10px;
+}
+.item-navbar .button {
+    padding: 9px 5px;
+}
+
+.item-navbar:not(.button) a:hover,
+.item-navbar a:hover::after {
+    color: #ccc;
+}
+
+.menu-navbar,
+.submenu-list {   
+    list-style-type: none;
+}
+
+.menu-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submenu {
+    position: relative;
+    cursor: pointer;
+}
+
+.submenu-list {
+    visibility: hidden;
+    position: absolute;
+    background: #88252a;
+    width: max-content;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.submenu-list > .submenu-item {
+    padding: 5px;
+}
+
+.submenu-item:hover {
+    text-decoration: underline;
+}
+
+.submenu:hover .submenu-list {
+    visibility: visible;
+}
+
+input {
+    padding: 10px 100px 10px 10px;
+    border: none;
+    border-radius: 20px;
+}
+
+
+/* LIST OF MOVIES */
+
+.heading {
+    margin: 15px;
+}
+
+#movie-list {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-rows: repeat(2, 360px);
+    margin: 10px;
+}
+
+.poster {
+    border-radius: 5px;
+}
