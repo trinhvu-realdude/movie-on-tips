@@ -15,7 +15,7 @@ async function getMovieByTitle(title, endpoint) {
     const response = await fetch(base_url + endpoint + `?title=${title}`);
     const data = await response.json();
 
-    return data;
+    return data[0];
 }
 
 async function getMoviesBySearch(search, endpoint) {
