@@ -1,17 +1,48 @@
 const base_url = "http://localhost:3000/";
 
 async function displayMoviesByCategory(endpoint) {
-    const response = await fetch(base_url + endpoint);
-    const data = await response.json();
-
+    const data = await getMoviesByCategory(endpoint);
     const list = document.getElementById("movie-list");
+    show(data, list, endpoint);
+}
 
+async function displayMovieById(id, endpoint) {
+    const data = await getMovieById(id, endpoint);
+    console.log(data);
+}
+
+async function displayMovieByTitle(title, endpoint) {
+    const data = await getMovieById(title, endpoint);
+    console.log(data);
+}
+
+async function searchMovies(endpoint) {
+    let search = document.getElementById("search").value;
+    const data = await getMoviesBySearch(search, endpoint);
+    const movieList = document.getElementById("movie-list");
+    const searchList = document.getElementById("search-list");
+
+    if (search === "") {
+        movieList.style.display = "grid";
+        searchList.style.display = "none";
+    } else {
+        movieList.style.display = "none";
+        searchList.style.display = "grid";
+
+        while (searchList.children.length !== 0) {
+            searchList.removeChild(searchList.children[0]);
+        }
+        show(data, searchList, endpoint);
+    }
+}
+
+async function show(data, list, endpoint) {
     for (let i = 0; i < data.length; i++) {
         if (data[i].poster !== "") {
             if (endpoint === "top-rated-india" || endpoint === "top-rated-movies") {
                 const cards = `
                     <div class="container-poster">
-                        <a onclick="getMovieByTitle('${data[i].title}', '${endpoint}')">
+                        <a onclick="displayMovieByTitle('${data[i].title}', '${endpoint}')">
                             <img class="poster" src="../img/${data[i].poster}" alt="${data[i].title}">
                             <div class="movie-info">
                                 <div class="movie-title">${data[i].title}</div>
@@ -23,7 +54,7 @@ async function displayMoviesByCategory(endpoint) {
             } else {
                 const cards = `
                     <div class="container-poster">
-                        <a onclick="getMovieById('${data[i].id}', '${endpoint}')">
+                        <a onclick="displayMovieById('${data[i].id}', '${endpoint}')">
                             <img class="poster" src="../img/${data[i].poster}" alt="${data[i].title}">
                             <div class="movie-info">
                                 <div class="movie-title">${data[i].title}</div>
@@ -33,28 +64,6 @@ async function displayMoviesByCategory(endpoint) {
                 `;
                 list.innerHTML += cards;
             }
-        }
-    }
-}
-
-async function getMovieById(id, endpoint) {
-    const response = await fetch(base_url + endpoint);
-    const data = await response.json();
-
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].id === id) {
-            console.log(data[i]);
-        }
-    }
-}
-
-async function getMovieByTitle(title, endpoint) {
-    const response = await fetch(base_url + endpoint);
-    const data = await response.json();
-
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].title === title) {
-            console.log(data[i]);
         }
     }
 }

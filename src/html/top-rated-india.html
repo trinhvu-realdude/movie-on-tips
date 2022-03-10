@@ -23,7 +23,7 @@
                             <img src="../img/logo.png" alt="logo" width="50" height="50">
                         </a>
                     </li>
-                    <input type="text" name="search" placeholder="Search...">
+                    <input oninput="searchMovies('top-rated-india')" type="text" name="search" placeholder="Search..." id="search">
                     <li class="item-navbar">
                         <a href="#about">About</a>
                     </li>
@@ -64,10 +64,12 @@
                     </h2>
                 </div>
                 <div id="movie-list"></div>
+                <div id="search-list"></div>
             </div>
         </section>
 
         <script src="../js/render.js"></script>
+        <script src="../js/controller.js"></script>
 
         <script>
             displayMoviesByCategory("top-rated-india");

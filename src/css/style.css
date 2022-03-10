@@ -79,20 +79,23 @@ input {
     border-radius: 20px;
 }
 
-
 /* LIST OF MOVIES */
 
 .heading {
     margin: 15px;
 }
 
-#movie-list {
+#movie-list, #search-list {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     grid-template-rows: repeat(2, 360px);
     margin: 10px;
 }
+
+/* #search-list {
+    display: grid;
+} */
 
 .poster {
     width: 240px; 
