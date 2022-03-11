@@ -1,26 +1,23 @@
-async function getMoviesByCategory(endpoint) {
+const getMoviesByCategory = async (endpoint) => {
     const response = await fetch(base_url + endpoint);
     const data = await response.json();
 
     return data;
 }
 
-async function getMovieById(id, endpoint) {
+const getMovieById = async (id, endpoint) => {
     const response = await fetch(base_url + endpoint + `/${id}`);
     const data = await response.json();
     return data;
 }
 
-async function getMovieByTitle(title, endpoint) {
+const getMovieByTitle = async (title, endpoint) => {
     const response = await fetch(base_url + endpoint + `?title=${title}`);
     const data = await response.json();
-
     return data[0];
 }
 
-async function getMoviesBySearch(search, endpoint) {
-    // let searchValue = document.getElementById("search").value;
-
+const getMoviesBySearch = async (search, endpoint) => {
     const response = await fetch(base_url + endpoint);
     const data = await response.json();
 
@@ -33,4 +30,27 @@ async function getMoviesBySearch(search, endpoint) {
     }
 
     return result;
+}
+
+const addMovieToFavourite = async (id, title, poster) => {
+    const response = await fetch(base_url + "favourites", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ movieId: id, title: title, poster: poster })
+    });
+    await response.json();
+    
+    alert(`Add ${title} movie to favourite successfully!`);
+}
+
+const deleteMovieFavourite = async (id) => {
+    const response = await fetch (base_url + `favourites/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    return response;
 }
