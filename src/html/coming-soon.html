@@ -1,71 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../img/logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Movie On Tips | Coming Soon</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../img/logo.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Movie On Tips | Coming Soon</title>
+    </head>
 
-<body>
-    <header>
-        <nav class="navbar">
-            <ul class="menu-navbar">
-                <li class="logo">
-                    <a href="home.html">
-                        <img src="../img/logo.png" alt="logo" width="50" height="50">
-                    </a>
-                </li>
-                <input oninput="searchMovies('movies-coming')" type="text" name="search" placeholder="Search..." id="search">
-                <li class="item-navbar">
-                    <a href="coming-soon.html">Coming soon</a>
-                </li>
-                <li class="item-navbar">
-                    <a href="movies-in-theaters.html">Movies in theaters</a>
-                </li>
-                <li class="item-navbar">
-                    <a href="top-rated-movies.html">Top-rated movies</a>
-                </li>
-                <li class="item-navbar">
-                    <a href="top-rated-india.html">Top-rated India</a>
-                </li>
-                <li class="item-navbar">
-                    <a href="favourites.html">Favourites</a>
-                </li>
-                <li class="toggle" style="display: none;">
-                    <a href="#">
-                        <i class="fas fa-bars"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <body>
+        <header>
+            <nav class="navbar">
+                <ul class="menu-navbar">
+                    <li class="logo">
+                        <a href="home.html">
+                            <img src="../img/logo.png" alt="logo" width="50" height="50">
+                        </a>
+                    </li>
+                    <input oninput="searchMovies('movies-coming')" type="text" name="search" placeholder="Search..." id="search">
+                    <li class="item-navbar">
+                        <a href="coming-soon.html">Coming soon</a>
+                    </li>
+                    <li class="item-navbar">
+                        <a href="movies-in-theaters.html">Movies in theaters</a>
+                    </li>
+                    <li class="item-navbar">
+                        <a href="top-rated-movies.html">Top-rated movies</a>
+                    </li>
+                    <li class="item-navbar">
+                        <a href="top-rated-india.html">Top-rated India</a>
+                    </li>
+                    <li class="item-navbar">
+                        <a href="favourites.html">Favourites</a>
+                    </li>
+                    <li class="toggle" style="display: none;">
+                        <a href="#">
+                            <i class="fas fa-bars"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
 
-    <section>
-        <div class="container">
-            <div class="heading">
-                <h2>
-                    Coming Soon
-                </h2>
+        <section>
+            <div class="container">
+                <div class="heading">
+                    <h2>
+                        Coming Soon
+                    </h2>
+                </div>
+                <div id="movie-list"></div>
+                <div id="search-list"></div>
             </div>
-            <div id="movie-list"></div>
-            <div id="search-list"></div>
-        </div>
-    </section>
+        </section>
 
-    <script src="../js/render.js"></script>
-    <script src="../js/controller.js"></script>
+        <div id="modal" class="modal-movie"></div>
 
-    <script>
-        displayMoviesByCategory("movies-coming");
-    </script>
-</body>
+        <script src="../js/render.js"></script>
+        <script src="../js/controller.js"></script>
+
+        <script>
+            displayMoviesByCategory("movies-coming");
+        </script>
+    </body>
 
 </html>

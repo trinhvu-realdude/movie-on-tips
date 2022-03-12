@@ -19,7 +19,7 @@ a {
 }
 
 .logo {
-    padding: 7.5px 10px 7.5px 70px;
+    padding: 7.5px 10px 7.5px 60px;
 }
 
 .item-navbar {
@@ -78,6 +78,7 @@ input {
     padding: 10px 100px 10px 10px;
     border: none;
     border-radius: 20px;
+    width: 30%;
 }
 
 /* LIST OF MOVIES */
@@ -100,11 +101,8 @@ input {
 .container-poster .poster {
     position: relative;
     height: 360px;
-    /* border: 1px solid #585454; */
     border-radius: 10px;
     background-size: 100% 360px;
-    /* background-repeat: no-repeat; */
-    /* transition: opacity 0.2s ease-in-out; */
 }
 
 .container-poster .poster::after {
@@ -134,20 +132,117 @@ input {
     box-shadow: 5px 5px 5px #585454;
 }
 
-.heart-icon {
+.button-icon {
     float: right;
     padding: 10px;
     opacity: 0;
     transition: 0.5s;
 }
 
-.container-poster:hover .heart-icon {
+.button-icon:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+.container-poster:hover .button-icon {
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
 }
 
-.movie-info {
-    display: none;
+.modal-movie {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+/* Modal Content */
+.modal-content {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    overflow: hidden;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 70%;
+    border-radius: 5px;
+    -webkit-animation-name: animate;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animate;
+    animation-duration: 0.4s
+}
+
+@-webkit-keyframes animate {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animate {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.left-side {
+    margin: 0 20px;
+}
+
+.left-side-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-side-content img {
+    border-radius: 10px;
+    width: 240px;
+    height: 360px;
+    border: 1px solid black;
+}
+
+.left-side-content button {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f44336;
+    border: 2px solid #f44336;
+    color: white;
+}
+
+.left-side-content button:hover {
+    cursor: pointer;
+    background-color: #e7e7e7;
+    color: black;
+}
+
+.right-side div:not(.blank) {
+    padding-bottom: 10px;
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 15px;
+    color: #aaaaaa;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 @media(max-width: 1000px) {
@@ -157,6 +252,7 @@ input {
 }
 
 @media(max-width: 700px) {
+    
     .container-poster {
         width: 50%;
     }
@@ -173,7 +269,18 @@ input {
         box-shadow: none;
     }
 
-    .heart-icon {
+    .button-icon {
         opacity: 1;
+    }
+
+    .modal-content {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+    }
+
+    .modal-content .right-side {
+        margin-left: 15px;
     }
 }

@@ -34495,16 +34495,75 @@
   ],
   "favourites": [
     {
-      "movieId": 95,
-      "title": "Solo: A Star Wars Story",
-      "poster": "MV5BMTYyMjAyMTI5NF5BMl5BanBnXkFtZTgwOTAxMTQ3NDM@._V1_SY500_CR0,0,337,500_AL_.jpg",
-      "id": 1
+      "movieId": 32,
+      "title": "Unsane",
+      "poster": "MV5BNTYzMDYzMzA1MV5BMl5BanBnXkFtZTgwODUzODg2NDM@._V1_SY500_CR0,0,337,500_AL_.jpg",
+      "id": 12
     },
     {
-      "movieId": 14,
-      "title": "Western",
-      "poster": "MV5BZDRkZGUxZmEtZDdiZC00NGJmLWFiODAtN2RiMzY3ODhjNTNmXkEyXkFqcGdeQXVyMTg5MDEyNw@@._V1_SY500_CR0,0,341,500_AL_.jpg",
-      "id": 2
+      "movieId": 13,
+      "title": "Souvenir",
+      "poster": "MV5BZmJkZjVhNGUtOTg4MC00YzAwLTg4ZjEtZjAxYmVlNTlkOTgyXkEyXkFqcGdeQXVyNTQwMDA5NTg@._V1_SY500_CR0,0,333,500_AL_.jpg",
+      "id": 15
+    },
+    {
+      "movieId": 3,
+      "title": "Hannah",
+      "poster": "MV5BNWJmMWIxMjQtZTk0Mi00YTE0LTkyNzAtYzQxYjcwYjE4ZDk2XkEyXkFqcGdeQXVyMTc4MzI2NQ@@._V1_SY500_SX350_AL_.jpg",
+      "id": 16
+    },
+    {
+      "movieId": 8,
+      "title": "Red Sparrow",
+      "poster": "MV5BMTA3MDkxOTc4NDdeQTJeQWpwZ15BbWU4MDAxNzgyNTQz._V1_SY500_CR0,0,337,500_AL_.jpg",
+      "id": 17
+    },
+    {
+      "movieId": 4,
+      "title": "The Lodgers",
+      "poster": "MV5BM2FhM2E1MTktMDYwZi00ODA1LWI0YTYtN2NjZjM3ODFjYmU5XkEyXkFqcGdeQXVyMjY1ODQ3NTA@._V1_SY500_CR0,0,337,500_AL_.jpg",
+      "id": 18
+    },
+    {
+      "movieId": 5,
+      "title": "Beast of Burden",
+      "poster": "MV5BMjEyNTM3MDQ2NV5BMl5BanBnXkFtZTgwMDI5Nzk1NDM@._V1_SY500_CR0,0,336,500_AL_.jpg",
+      "id": 19
+    },
+    {
+      "movieId": 27,
+      "title": "I Can Only Imagine",
+      "poster": "MV5BMTRjNDc5NTAtZGJlYS00NTg4LTk2NTEtNGUwY2NiZWM3YTY2XkEyXkFqcGdeQXVyNTQ3MjE4NTU@._V1_SY456_SX295_AL_.jpg",
+      "id": 20
+    },
+    {
+      "movieId": 1,
+      "title": "Game Night",
+      "poster": "MV5BMjQxMDE5NDg0NV5BMl5BanBnXkFtZTgwNTA5MDE2NDM@._V1_SY500_CR0,0,337,500_AL_.jpg",
+      "id": 21
+    },
+    {
+      "movieId": 21,
+      "title": "Winchester - House of Ghosts",
+      "poster": "MV5BMjI2OWE5OGItMTE4Yi00ZmIzLThjZDctNTU1OTMxMTc3Yjg4XkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_SY500_CR0,0,315,500_AL_.jpg",
+      "id": 25
+    },
+    {
+      "title": "Hum Aapke Hain Koun...!",
+      "poster": "MV5BMTcwMjk5NDg1Nl5BMl5BanBnXkFtZTgwMjA2NTkwMzE@._V1_SY250_CR0,0,187,250_AL_.jpg",
+      "id": 26
+    },
+    {
+      "movieId": 2,
+      "title": "Area X: Annihilation",
+      "poster": "MV5BMTk2Mjc2NzYxNl5BMl5BanBnXkFtZTgwMTA2OTA1NDM@._V1_SY500_CR0,0,320,500_AL_.jpg",
+      "id": 27
+    },
+    {
+      "movieId": 7,
+      "title": "Survivors Guide to Prison",
+      "poster": "MV5BNzhmNmI5MDMtZDEyOC00ODkyLTkwODItODQzODAzY2QyZjVlXkEyXkFqcGdeQXVyMzQwMTY2Nzk@._V1_SY500_CR0,0,357,500_AL_.jpg",
+      "id": 28
     }
   ]
 }

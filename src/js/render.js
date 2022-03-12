@@ -8,12 +8,12 @@ const displayMoviesByCategory = async (endpoint) => {
 
 const displayMovieById = async (id, endpoint) => {
     const data = await getMovieById(id, endpoint);
-    console.log(data);
+    showSpecificMovie(data);
 }
 
 const displayMovieByTitle = async (title, endpoint) => {
     const data = await getMovieByTitle(title, endpoint);
-    console.log(data);
+    showSpecificMovie(data);
 }
 
 const searchMovies = async (endpoint) => {
@@ -41,9 +41,9 @@ const show = (data, list, endpoint) => {
         if (data[i].poster !== "") {
             const posterForId = `
                 <div class="container-poster">
-                    <div class="poster" style="background-image: url('../img/${data[i].poster}')" data-text="${data[i].title}">
-                        <div class="heart-icon">
-                            <img src='../img/heart.png' width="30" height="30" onclick="clickHeartButton(${data[i].id}, '${data[i].title}', '${data[i].poster}')">
+                    <div class="poster" style="background-image: url('../img/${data[i].poster}')" data-text="${data[i].title}" onclick="displayMovieById(${data[i].id}, '${endpoint}')">
+                        <div class="button-icon">
+                            <img src='../img/heart.png' width="30" height="30" onclick="clickHeartButton(event, ${data[i].id}, '${data[i].title}', '${data[i].poster}')">
                         </div>
                     </div>
                 </div>
@@ -51,14 +51,13 @@ const show = (data, list, endpoint) => {
 
             const posterForTitle = `
                 <div class="container-poster">
-                    <div class="poster" style="background-image: url('../img/${data[i].poster}')" data-text="${data[i].title}">
-                        <div class="heart-icon">
-                            <img src='../img/heart.png' width="30" height="30" onclick="clickHeartButton(${data[i].id}, '${data[i].title}', '${data[i].poster}')">
+                    <div class="poster" style="background-image: url('../img/${data[i].poster}')" data-text="${data[i].title}" onclick="displayMovieByTitle('${data[i].title}', '${endpoint}')">
+                        <div class="button-icon">
+                            <img src='../img/heart.png' width="30" height="30" onclick="clickHeartButton(event, ${data[i].id}, '${data[i].title}', '${data[i].poster}');">
                         </div>
                     </div>
                 </div>
             `;
-
             list.innerHTML += endpoint === "top-rated-india" || endpoint === "top-rated-movies" ? posterForTitle : posterForId;
         }
     }
@@ -66,18 +65,17 @@ const show = (data, list, endpoint) => {
 
 const showFavourites = (data, list) => {
     if (data.length != 0) {
-        for (let i = 0; i < data.length; i++) {
+        for (let i = data.length-1; i >= 0; i--) {
             if (data[i].poster !== "") {
                 const posters = `
                     <div class="container-poster">
                         <div class="poster" style="background-image: url('../img/${data[i].poster}')" data-text="${data[i].title}">
-                            <div class="heart-icon">
+                            <div class="button-icon">
                                 <i class="fa fa-trash-o" style="font-size:30px;color:blue" onclick="clickGarbageButton(${data[i].id})"></i>
                             </div>
                         </div>
                     </div>
                 `;
-
                 list.innerHTML += posters;
             }
         } 
@@ -89,39 +87,70 @@ const showFavourites = (data, list) => {
         `;
         list.innerHTML += display;
     }
-    
 }
 
-const clickHeartButton = async (id, title, poster) => {
-    const favourites = await getMoviesByCategory("favourites");
+const showSpecificMovie = (data) => {
+    let sum = 0;
 
-    if (isDuplicate(id, title, favourites)) {
-        alert(`${title} already existed in your favourite list.`);
-    } else {
-        await addMovieToFavourite(id, title, poster);
-    }
+    data.ratings.forEach(e => {
+        sum += e;
+    });
+
+    let averageRating = (sum/data.ratings.length).toFixed(1);
+
+    const modal = document.getElementById("modal");
+
+    modal.style.display = "block";
+
+    const movie = `
+        <div class="modal-content">
+            <span class="close" onclick="clickCloseButton()">&times;</span>
+            <div class="left-side">
+                <div class="left-side-content">
+                    <h2 style="padding-bottom: 10px">${data.title}</h2>
+                    <img src="../img/${data.poster}"/><br>
+                    <button class="favourite-button" onclick="clickHeartButton(event, ${data.id}, '${data.title}', '${data.poster}')">Add to favourite</button>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="blank" style="height: 40px"></div>
+                <div class="release-date">
+                    Release Date: <strong>${data.releaseDate}</strong>
+                </div>
+                <div class="list-genre">
+                    Genres: <strong>${data.genres.join(", ")}</strong>
+                </div>
+                <div class="list-cast">
+                    Cast: <strong>${data.actors.join(", ")}</strong>
+                </div>
+                <div class="average-rating">
+                    Average Rating: <strong>${averageRating}</strong>
+                </div>
+                <div class="imdb-rating">
+                    IMDb Rating: <strong>${data.imdbRating == "" ? "0.0" : data.imdbRating}</strong>
+                </div>
+                <div class="description" style="line-height: 25px">
+                    <strong>Description:</strong> ${data.storyline}
+                </div>
+            </div>
+        </div>
+    `;
+    modal.innerHTML = movie;
 }
 
-const clickGarbageButton = async (id) => {
+const clickHeartButton = (event, id, title, poster) => {
+    addMovieToFavourite(id, title, poster);
+    event.stopPropagation();
+}
+
+const clickGarbageButton = (id) => {
     if (confirm("Are you sure to delete the movie?") == true) {
-        await deleteMovieFavourite(id);
+        deleteMovieFavourite(id);
     }
 }
 
-const isDuplicate = (id, title, list) => {
-    if (id != undefined) {
-        for (let i = 0; i < list.length; i++) {
-            if (list[i].movieId == id) {
-                return true;
-            } 
-        }
-        return false;
-    } else {
-        for (let i = 0; i < list.length; i++) {
-            if (list[i].title == title) {
-                return true;
-            } 
-        }
-        return false;
-    }
+const clickCloseButton = () => {
+    const modal = document.getElementById("modal");
+
+    modal.style.display = "none";
 }
