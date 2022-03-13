@@ -45,6 +45,7 @@ a {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    flex-direction: row;
 }
 
 .submenu {
@@ -72,6 +73,10 @@ a {
 
 .submenu:hover .submenu-list {
     visibility: visible;
+}
+
+.toggle {
+    display: none;
 }
 
 input {
@@ -252,7 +257,7 @@ input {
 }
 
 @media(max-width: 700px) {
-    
+
     .container-poster {
         width: 50%;
     }

@@ -31,7 +31,7 @@ const getMoviesBySearch = async (search, endpoint) => {
 }
 
 const addMovieToFavourite = async (id, title, poster) => {
-    const favourites = await getMoviesByCategory("favourites"); 
+    const favourites = await getMoviesByCategory("favourites");
 
     if (isDuplicate(id, title, favourites)) {
         alert(`${title} already existed in your favourite list.`);
@@ -41,16 +41,18 @@ const addMovieToFavourite = async (id, title, poster) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ movieId: id, title: title, poster: poster })
+            body: JSON.stringify(
+                {movieId: id, title: title, poster: poster}
+            )
         });
         await response.json();
-        
+
         alert(`Add ${title} movie to favourite successfully!`);
     }
 }
 
 const deleteMovieFavourite = async (id) => {
-    const response = await fetch (base_url + `favourites/${id}`, {
+    const response = await fetch(base_url + `favourites/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -64,14 +66,14 @@ const isDuplicate = (id, title, list) => {
         for (let i = 0; i < list.length; i++) {
             if (list[i].movieId == id && list[i].title == title) {
                 return true;
-            } 
+            }
         }
         return false;
     } else {
         for (let i = 0; i < list.length; i++) {
             if (list[i].title == title) {
                 return true;
-            } 
+            }
         }
         return false;
     }
