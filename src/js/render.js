@@ -41,21 +41,9 @@ const show = (data, list, endpoint) => {
         if (data[i].poster !== "") {
             const posterForId = `
                 <div class="container-poster">
-                    <div class="poster" style="background-image: url('../img/${
-                data[i].poster
-            }')" data-text="${
-                data[i].title
-            }" onclick="displayMovieById(${
-                data[i].id
-            }, '${endpoint}')">
+                    <div class="poster" style="background-image: url('../img/${data[i].poster}')" data-text="${data[i].title}" onclick="displayMovieById(${data[i].id}, '${endpoint}')">
                         <div class="button-icon">
-                            <img src='../img/heart.png' width="30" height="30" onclick="clickHeartButton(event, ${
-                data[i].id
-            }, '${
-                data[i].title
-            }', '${
-                data[i].poster
-            }')">
+                            <img src='../img/heart.png' width="30" height="30" onclick="clickHeartButton(event, ${data[i].id}, '${data[i].title}', '${data[i].poster}')">
                         </div>
                     </div>
                 </div>
@@ -63,21 +51,9 @@ const show = (data, list, endpoint) => {
 
             const posterForTitle = `
                 <div class="container-poster">
-                    <div class="poster" style="background-image: url('../img/${
-                data[i].poster
-            }')" data-text="${
-                data[i].title
-            }" onclick="displayMovieByTitle('${
-                data[i].title
-            }', '${endpoint}')">
+                    <div class="poster" style="background-image: url('../img/${data[i].poster}')" data-text="${data[i].title}" onclick="displayMovieByTitle('${data[i].title}', '${endpoint}')">
                         <div class="button-icon">
-                            <img src='../img/heart.png' width="30" height="30" onclick="clickHeartButton(event, ${
-                data[i].id
-            }, '${
-                data[i].title
-            }', '${
-                data[i].poster
-            }');">
+                            <img src='../img/heart.png' width="30" height="30" onclick="clickHeartButton(event, ${data[i].id}, '${data[i].title}', '${data[i].poster}');">
                         </div>
                     </div>
                 </div>
@@ -93,15 +69,9 @@ const showFavourites = (data, list) => {
             if (data[i].poster !== "") {
                 const posters = `
                     <div class="container-poster">
-                        <div class="poster" style="background-image: url('../img/${
-                    data[i].poster
-                }')" data-text="${
-                    data[i].title
-                }">
+                        <div class="poster" style="background-image: url('../img/${data[i].poster}')" data-text="${data[i].title}">
                             <div class="button-icon">
-                                <i class="fa fa-trash-o" style="font-size:30px;color:blue" onclick="clickGarbageButton(${
-                    data[i].id
-                })"></i>
+                                <i class="fa fa-trash-o" style="font-size:30px;color:blue" onclick="clickGarbageButton(${data[i].id})"></i>
                             </div>
                         </div>
                     </div>
@@ -137,50 +107,30 @@ const showSpecificMovie = (data) => {
             <span class="close" onclick="clickCloseButton()">&times;</span>
             <div class="left-side">
                 <div class="left-side-content">
-                    <h2 style="padding-bottom: 10px">${
-        data.title
-    }</h2>
-                    <img src="../img/${
-        data.poster
-    }"/><br>
-                    <button class="favourite-button" onclick="clickHeartButton(event, ${
-        data.id
-    }, '${
-        data.title
-    }', '${
-        data.poster
-    }')">Add to favourite</button>
+                    <h2 style="padding-bottom: 10px">${data.title}</h2>
+                    <img src="../img/${ data.poster}"/><br>
+                    <button class="favourite-button" onclick="clickHeartButton(event, ${data.id}, '${data.title}', '${data.poster}')">Add to favourite</button>
                 </div>
             </div>
             <div class="right-side">
                 <div class="blank" style="height: 40px"></div>
                 <div class="release-date">
-                    Release Date: <strong>${
-        data.releaseDate == "" ? "Not found" : data.releaseDate
-    }</strong>
+                    Release Date: <strong>${data.releaseDate == "" ? "Not found" : data.releaseDate}</strong>
                 </div>
                 <div class="list-genre">
-                    Genres: <strong>${
-        data.genres.join(", ")
-    }</strong>
+                    Genres: <strong>${data.genres.join(", ")}</strong>
                 </div>
                 <div class="list-cast">
-                    Cast: <strong>${
-        data.actors.join(", ")
-    }</strong>
+                    Cast: <strong>${data.actors.join(", ")}</strong>
                 </div>
                 <div class="average-rating">
                     Average Rating: <strong>${averageRating}</strong>
                 </div>
                 <div class="imdb-rating">
-                    IMDb Rating: <strong>${
-        data.imdbRating == "" ? "0.0" : data.imdbRating
-    }</strong>
+                    IMDb Rating: <strong>${data.imdbRating == "" ? "0.0" : data.imdbRating}</strong>
                 </div>
                 <div class="description" style="line-height: 25px">
-                    <strong>Description:</strong> ${
-        data.storyline == "" ? "No description" : data.storyline
-    }
+                    <strong>Description:</strong> ${data.storyline == "" ? "No description" : data.storyline}
                 </div>
             </div>
         </div>
